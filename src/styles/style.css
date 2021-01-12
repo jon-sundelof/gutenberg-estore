@@ -40,6 +40,26 @@ body{
     margin: 0 10px;
 }
 
+.headerMain > nav > a > i > span{
+    font-size: 1rem;
+    margin-bottom: 2%;
+}
+
+.fa-shopping-basket{
+    font-size: 1.5rem;
+    
+}
+
+.shopping-cart{
+    margin-right: 5% !important;
+}
+
+/* 
+.fa-shopping-basket:hover{
+    color: black;
+    font-size: 1.7rem;
+} */
+
 .headerMain > nav > a:hover{
     text-decoration: underline;
 }

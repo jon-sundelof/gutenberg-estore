@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Alert } from 'react-bootstrap';
-import { useAuth } from './contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -31,7 +31,7 @@ const Dashboard = () => {
             <div>:)</div>
             <br />
             <div>:)</div>
-            <Link to="/update-profile" className="btn btn-primary w-100 mt-3" A>Update Profile</Link>
+            <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
             <br></br>
             <Button variant="link" onClick={handleLogout}>Log Out</Button>
         </>
