@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from "firebase";
 
-// const db = firebase.firestore()
-// db.collection("products").doc("test").set({
-//     name: name,
-//     price: 1,
-// }).then(() => console.log("send")).catch((err) => console.log(err))
+const db = firebase.firestore()
+
 let array = [];
 
+
 const Product = ({ img, alt, infoText, price, name }) => {
-
-
+    const [product, setProduct] = useState({})
 
     const tshirt = {
         name: name,
-        price: price,
+        price: price
     }
 
+    useEffect(() => {
 
-    const [product, setProduct] = useState()
+        db.collection("products").doc(name).set({
+            img: img,
+            name: name,
+            price: 1,
+        }).then(() => console.log("send")).catch((err) => console.log(err))
+    }, [product])
 
-    const onButtonClick = () => {
-        array.push(tshirt)
+
+    const onButtonClick = (e) => {
         setProduct(tshirt)
-        localStorage.setItem("products", JSON.stringify(array))
     }
 
     return (
