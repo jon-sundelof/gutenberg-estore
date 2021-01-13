@@ -6,7 +6,7 @@ import quireTshirt from "../img/quireTshirt.jpg";
 import Product from "./Product"
 
 
-function Landingpage() {
+function Landingpage({ currentUser }) {
     return (
         <>
             {/* <Header number="1" /> */}

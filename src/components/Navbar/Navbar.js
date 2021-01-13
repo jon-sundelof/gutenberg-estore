@@ -1,12 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MenuItems } from './MenuItems';
 import './Navbar.css';
 import { ButtonNav } from './ButtonNav';
 import { Link } from 'react-router-dom';
 import Logo from '../svgs/Logo';
+import { auth } from '../../firebase/utils'
+
+const Navbar = ({ currentUser }) => {
+    /*  state = { clicked: false } */
+
+    const [clickedstate, setClickedstate] = useState(false)
+
+    const handleClick = () => setClickedstate(true)
 
 
-class Navbar extends React.Component {
+
+    return (
+        <nav className="navbar-items">
+            <Link to="/" >{/* <h1 className="navbar-logo" >Gutenberg</h1> */} <Logo className="svg-logo" /></Link >
+            <div className="menu-icon" onClick={handleClick}>
+                <i className={clickedstate ? 'fas fa-times' : 'fas fa-bars'}></i>
+            </div>
+            <ul className={clickedstate ? 'nav-menu active' : 'nav-menu'}>
+                {MenuItems.map((item, index) => {
+                    return (
+                        <li key={index}>
+                            <a className={item.cName} href={item.url} >
+                                {item.title}
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
+            {currentUser && (
+                <ul>
+                    <li>
+                        <span onClick={() => auth.signOut()} >
+                            Logout
+                        </span>
+                    </li>
+                </ul>
+            )}
+            {!currentUser && (
+                <ul>
+                    <li>
+                        <Link to="/signup">
+                            Sign Up
+                        </Link>
+                        <Link to="/login">
+                            Login
+                        </Link>
+                    </li>
+                </ul>
+            )}
+
+
+
+
+
+            {/*       <Link to="/login" ><ButtonNav>Log In</ButtonNav></Link>
+                <Link to="/signup" ><ButtonNav>Sign Up</ButtonNav></Link> */}
+
+        </nav >
+    )
+}
+
+export default Navbar;
+
+
+/* class Navbar extends React.Component(props) {
     state = { clicked: false }
 
     handleClick = () => this.setState({ clicked: !this.state.clicked })
@@ -14,7 +76,7 @@ class Navbar extends React.Component {
     render() {
         return (
             <nav className="navbar-items">
-                <Link to="/" >{/* <h1 className="navbar-logo" >Gutenberg</h1> */} <Logo className="svg-logo" /></Link >
+                <Link to="/" ><Logo className="svg-logo" /></Link >
                 <div className="menu-icon" onClick={this.handleClick}>
                     <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>
@@ -26,15 +88,16 @@ class Navbar extends React.Component {
                                     {item.title}
                                 </a>
                             </li>
+
                         )
                     })}
                 </ul>
-                {/*       <Link to="/login" ><ButtonNav>Log In</ButtonNav></Link>
-                <Link to="/signup" ><ButtonNav>Sign Up</ButtonNav></Link> */}
+                <Link to="/login" ><ButtonNav>Log In</ButtonNav></Link>
+                <Link to="/signup" ><ButtonNav>Sign Up</ButtonNav></Link>
 
             </nav >
         )
     }
 }
 
-export default Navbar;
+export default Navbar; */

@@ -18,7 +18,7 @@ export const MenuItems = [
         title: <i class="fas fa-shopping-basket"><span> 0</span></i>,
         url: '/checkout',
         cName: 'navlinks'
-    },
+    }/* ,
     {
         title: 'Login',
         url: '/login',
@@ -28,5 +28,5 @@ export const MenuItems = [
         title: 'Sign Up',
         url: '/signup',
         cName: 'navlinks'
-    }
+    } */
 ]
