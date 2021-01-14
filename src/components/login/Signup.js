@@ -4,8 +4,6 @@ import { useAuth } from '../contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom';
 import { signInWithGoogle } from '../../firebase/utils';
 
-import '../../styles/Signup.css'
-
 export default function Signup(props) {
     const emailRef = useRef()
     const passwordRef = useRef()

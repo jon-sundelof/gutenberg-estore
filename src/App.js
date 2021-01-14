@@ -3,6 +3,9 @@ import './styles/style.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { auth } from './firebase/firebase'
+/* import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar' */
+import NavbarShow from './components/Navbar/NavbarShow'
 import SignupPage from './components/login/SignupPage'
 import Dashboard from './components/login/Dashboard';
 import LoginPage from './components/login/LoginPage';
@@ -12,7 +15,7 @@ import PrivateRoute from './components/login/PrivateRoute';
 import PrivateRouteNav from './components/login/PrivateRouteNav';
 import ForgotPassword from './components/login/ForgotPassword';
 import UpdateProfile from './components/login/UpdateProfile';
-import Navbar from './components/Navbar/Navbar'
+/* import Navbar from './components/Navbar/Navbar' */
 import CheckoutCartList from './components/cart/CheckoutCartList';
 import { handleUserProfile } from './firebase/utils';
 
@@ -20,7 +23,7 @@ const products = []
 
 const App = () => {
 
-    const [currentUser, setCurrentUser] = useState(null)
+    const [currentUser, setCurrentUser] = useState("No current user")
 
     let authListener = null;
 
@@ -28,7 +31,7 @@ const App = () => {
     useEffect(() => {
         authListener = auth.onAuthStateChanged(userAuth => {
             if (!userAuth) {
-                setCurrentUser(null)
+                setCurrentUser("No current user")
             } else {
                 setCurrentUser(userAuth)
             }
@@ -66,12 +69,16 @@ const App = () => {
     //     console.log(products)
     // })
 
+    console.log()
+
+
     return (
         <>
             <Router>
-                <Navbar currentUser={currentUser} />
+                <NavbarShow currentUser={currentUser} />
                 <AuthProvider>
                     <Switch>
+
                         <Route exact path="/" ><Landingpage currentUser={currentUser} /></Route>
                         <Route exact path="/checkout">
                             <CheckoutCartList />

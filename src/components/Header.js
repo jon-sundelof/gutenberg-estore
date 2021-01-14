@@ -1,21 +1,28 @@
 import React from 'react'
+import styled from "styled-components"
 
 const Header = ({ number }) => {
     return (
-        <header className="headerMain">
-            <h1>Gutenbergs e-store!</h1>
-            <nav>
-                <a href="shopping-cart"
-                    className="shopping-cart">
-                    <i class="fas fa-shopping-basket">
-                        <span>{number}</span>
-                    </i>
-                </a>
-                <a href="login">Login</a>
-                <a href="signup">Sign Up</a>
-            </nav>
-        </header>
+        <Wrapper className="headerMain">
+            <Title>Gutenbergs e-store!</Title>
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.header`
+    margin: 0%;
+    height: 150px;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    align-items: center;
+    justify-content: center;
+`
+
+const Title = styled.h1`
+    color: rgb(59, 72, 169);
+    margin: 0%;
+    font-size: 4rem;
+    font-family: 'Work Sans', sans-serif
+`
 
 export default Header;
