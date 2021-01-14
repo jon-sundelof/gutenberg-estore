@@ -42,12 +42,14 @@ const Navbar = ({ currentUser }) => {
                 </ul>
             )}
             {!currentUser && (
-                <ul>
-                    <li>
-                        <Link to="/signup">
+                <ul className="signup-login-ul" >
+                    <li className="signup-login-nav" >
+                        <Link className="navlinks" to="/signup">
                             Sign Up
                         </Link>
-                        <Link to="/login">
+                    </li>
+                    <li>
+                        <Link className="navlinks" to="/login">
                             Login
                         </Link>
                     </li>

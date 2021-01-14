@@ -25,7 +25,7 @@
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    width: 70vw;
+    width: 50vw;
     justify-content: end;
     margin-right: 2rem;
 }
@@ -83,14 +83,14 @@
         z-index: 1;
     }
 
-    .nav-links {
+    .navlinks {
         text-align: center;
         padding: 2rem;
         width: 100%;
         display: table;
     }
 
-    .nav-links:hover {
+    .navlinks:hover {
         background-color: #ffffff;
         border-radius: 0;
     }
@@ -144,4 +144,31 @@
     margin-left: 100px;
     margin-bottom: 8px;
     width: 48%;
+}
+
+/* .signup-login-nav > :first-child, :last-child {
+    color: white;
+} */
+.signup-login-nav {
+    margin-right: 35px;
+    color: white;
+}
+.signup-login-ul, li > a {
+  color: white;
+  margin-right: 10px;
+}
+
+li > a { 
+ width: 200px;
+}
+.signup-login-ul, li > a:hover {
+  color: white;
+}
+
+.signup-login-ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    list-style: none;
 }
