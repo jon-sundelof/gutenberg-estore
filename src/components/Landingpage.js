@@ -6,6 +6,7 @@ import quireTshirt from "../img/quireTshirt.jpg";
 import Product from "./Product"
 import styled from "styled-components"
 import firebase from "firebase"
+import HeroSection from './HeroSection';
 
 
 
@@ -15,6 +16,7 @@ const Landingpage = ({ currentUser }) => {
     return (
         <>
             <main>
+                <HeroSection />
                 <Wrapper>
                     <Product
                         name="gutenbergTshirt"

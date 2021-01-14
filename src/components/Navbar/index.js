@@ -1,6 +1,7 @@
 import React from 'react';
 import { auth } from '../../firebase/utils'
 import { FaBars } from 'react-icons/fa'
+import Logo from '../svgs/Logo'
 /* import router from 'react-router-dom'; */
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
 
@@ -17,7 +18,7 @@ const Navbar = ({ toggle, currentUser }) => {
         <>
             <Nav>
                 <NavbarContainer>
-                    <NavLogo to="/" >Gutenberg</NavLogo>
+                    <NavLogo to="/" >Gutenberg E-Shirts</NavLogo>
                     <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>
