@@ -3,7 +3,8 @@ import { MdKeyboardArrowRight, MdArrowForward } from 'react-icons/md';
 
 
 export const HeroContainer = styled.div`
-    background: #0c0c0c;
+    /* background: #0c0c0c; */
+    background: #DE8066;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +22,7 @@ export const HeroBg = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 91.5vh;
     overflow: hidden;
 `;
 
@@ -32,6 +33,7 @@ export const VideoBg = styled.video`
     -o-object-fit: cover;
     object-fit: cover;
     background: #232a34;
+   
 `;
 
 export const HeroContent = styled.div`
