@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './styles/style.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { auth } from './firebase/firebase'
@@ -18,6 +17,8 @@ import UpdateProfile from './components/login/UpdateProfile';
 /* import Navbar from './components/Navbar/Navbar' */
 import CheckoutCartList from './components/cart/CheckoutCartList';
 import { handleUserProfile } from './firebase/utils';
+import { createGlobalStyle } from "styled-components";
+import Discover from './components/Discover';
 
 const products = []
 
@@ -69,19 +70,22 @@ const App = () => {
     //     console.log(products)
     // })
 
-    console.log()
+
 
 
     return (
         <>
             <Router>
+                <GlobalStyle />
                 <NavbarShow currentUser={currentUser} />
                 <AuthProvider>
                     <Switch>
 
                         <Route exact path="/" ><Landingpage currentUser={currentUser} /></Route>
+                        <Discover path="/discover" />
+
                         <Route exact path="/checkout">
-                            <CheckoutCartList />
+                            <CheckoutCartList currentUser={currentUser} />
                         </Route>
 
                         <PrivateRouteNav path="/signup" component={SignupPage} />
@@ -100,5 +104,35 @@ const App = () => {
         </>
     )
 }
+
+const GlobalStyle = createGlobalStyle`
+body{
+  padding: 0;
+  margin: 0;
+  background-color: #F1F1F1;
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Roboto Slab', serif; */
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+&:-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+&::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+&::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+  
+`;
 
 export default App;

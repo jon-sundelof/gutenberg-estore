@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth } from '../../firebase/utils'
 import { FaBars } from 'react-icons/fa'
 import Logo from '../svgs/Logo'
 /* import router from 'react-router-dom'; */
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
+import firebase from "firebase";
+
+const db = firebase.firestore();
+
 
 
 const Navbar = ({ toggle, currentUser }) => {
+
+    const [size, setSize] = useState(0)
+
+    db.collection("users").doc(currentUser.uid).collection("cart").get().then(snap => {
+        setSize(snap.size)
+    })
 
     const renderLogin = currentUser => {
         if (currentUser == "No current user") return false
@@ -33,7 +43,7 @@ const Navbar = ({ toggle, currentUser }) => {
                             <NavLinks to="contact">Contact Us</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="checkout"><i class="fas fa-shopping-basket"><span> 0</span></i></NavLinks>
+                            <NavLinks to="checkout"><i class="fas fa-shopping-basket"><span > {size}</span></i></NavLinks>
                         </NavItem>
 
                         {renderLogin(currentUser) && (

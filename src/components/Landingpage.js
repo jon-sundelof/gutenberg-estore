@@ -7,6 +7,7 @@ import Product from "./Product"
 import styled from "styled-components"
 import firebase from "firebase"
 import HeroSection from './HeroSection';
+import Footer from "./Footer"
 
 
 
@@ -17,13 +18,13 @@ const Landingpage = ({ currentUser }) => {
         <>
             <main>
                 <HeroSection />
-                <Wrapper>
+                <Wrapper id="products">
                     <Product
                         name="gutenbergTshirt"
                         img={gutenbergTshirt}
                         alt="Gutenberg t-shirt for gutenberg lovers"
                         infoText="For gutenberg lovers"
-                        price="Price: 100 000 SEK"
+                        price="249 Sek"
                         currentUserId={currentUser.uid}
 
                     />
@@ -32,7 +33,7 @@ const Landingpage = ({ currentUser }) => {
                         img={tinymceTshirt}
                         alt={"Tinymce tshirt"}
                         infoText="We will never forget you"
-                        price="Price: 100 000 SEK"
+                        price="419 Sek"
                         currentUserId={currentUser.uid}
 
                     />
@@ -41,21 +42,24 @@ const Landingpage = ({ currentUser }) => {
                         img={quireTshirt}
                         alt="The best note app on a t-shirt"
                         infoText="The best note app"
-                        price="Price: 100 000 SEK"
+                        price="1000 Sek"
                         currentUserId={currentUser.uid}
 
                     />
                 </Wrapper>
             </main>
+            <Footer />
         </>
     )
 }
 
 const Wrapper = styled.div`
-    margin-top: 5%;
+    margin-top: 2%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    height: 100vh;
+    background-color: #DE8066;
 `
 
 export default Landingpage;

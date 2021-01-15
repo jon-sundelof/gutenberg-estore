@@ -23,7 +23,7 @@ const HeroSection = () => {
                     Get your hand on flawless clothings ranging from A to Z.
                 </HeroP>
                 <HeroBtnWrapper>
-                    <Button to="signup" onMouseEnter={onHover} onMouseLeave={onHover}>
+                    <Button to="products" smooth={true} spy={true} onMouseEnter={onHover} onMouseLeave={onHover}>
                         Get started {hover ? <ArrowForward /> : <ArrowRight />}
                     </Button>
                 </HeroBtnWrapper>

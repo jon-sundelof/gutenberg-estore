@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import firebase from "firebase";
 import styled from "styled-components"
+import { useHistory } from 'react-router-dom';
+import ImageContentHover from "react-image-hover";
+import ReactImageMagnify from 'react-image-magnify';
+
 
 const db = firebase.firestore();
-const au = firebase.auth();
-// let currentUid = firebase.auth().currentUser.uid;
 
 let array = [];
-
 
 const Product = ({ img, alt, infoText, price, name, currentUserId }) => {
 
@@ -16,18 +17,48 @@ const Product = ({ img, alt, infoText, price, name, currentUserId }) => {
         name: name,
         price: price
     }
+    let history = useHistory()
+
 
     const usersRef = db.collection("users").doc(currentUserId);
 
+    const imageProps = {
+        smallImage: {
+            alt: alt,
+            isFluidWidth: true,
+            src: img,
+
+        },
+        largeImage: {
+            src: img,
+            width: 500,
+            height: 500
+        },
+        enlargedImageContainerStyle: { background: '#fffff', zIndex: 9 }
+    }
+
 
     const onButtonClick = (e) => {
+
+        if (!currentUserId) {
+
+            history.push("/login")
+            return;
+        }
+
+        const date = Date.now()
+
+
         usersRef.get()
             .then((docSnapshot) => {
                 if (docSnapshot.exists) {
                     usersRef.onSnapshot((doc) => {
                         db.collection("users").doc(currentUserId).collection("cart").doc().set({
+                            Img: img,
                             Tshirt: name,
-                            Price: price
+                            Price: price,
+                            id: date,
+                            alt: alt
                         })
                     })
                 } else {
@@ -43,12 +74,12 @@ const Product = ({ img, alt, infoText, price, name, currentUserId }) => {
 
     return (
         <Wrapper>
-            <InfoText>{infoText}</InfoText>
             <ImageContainer>
-                <Image src={img} alt={alt} />
+                <ReactImageMagnify {...imageProps} />
             </ImageContainer>
-            <Price>{price}</Price>
-            <Button onClick={onButtonClick}>BUY <i className="fas fa-shopping-cart" style={{ fontSize: "1.5rem" }}></i></Button>
+            <Title>{infoText}</Title>
+            <Price>{price}<Button onClick={onButtonClick}>BUY <i className="fas fa-shopping-cart" style={{ fontSize: "1rem" }}></i></Button></Price>
+
         </Wrapper>
     )
 }
@@ -60,37 +91,57 @@ const Wrapper = styled.div`
     align-items: center;
 `
 
-const InfoText = styled.p`
+const Title = styled.p`
     font-size: 1.3rem;
-    margin-bottom: 0 auto;
-    text-decoration: underline;
-    align-self: center;
-`
-
-const ImageContainer = styled.div`
-    width: 250px;
-    height: 250px;
-`
-
-const Image = styled.img`
-    border: 2px solid rgb(59, 72, 169);
-    border-radius: 20px;
-    width: 250px;
-    height: 250px;
-`
-
-const Price = styled.p`
-    margin: 0 auto;
+    margin-top: 10px;
+    align-self: flex-start;
+    color: #000000;
     font-family: 'Merriweather', serif;
 `
 
+const ImageContainer = styled.div`
+    width: 340px;
+    height: 370px;
+`
+
+const Image = styled.img`
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 340px;
+    height: 360px;
+
+    /* &:hover{
+        transition: all 2s;
+        transform: scale(1.50);
+    } */
+`
+
+const Price = styled.p`
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    color: #000000;
+    align-self: flex-start;
+    margin: 0%;
+`
+
 const Button = styled.button`
-    width: 100px;
-    border: 2px solid rgb(59, 72, 169);
+    width: 80px;
+    border: 2px solid #000000;
     border-radius: 20px;
     background: none;
-    padding: 5px;
-    outline: none;
+    padding: 3px;
+    color: #000000;
+    font-size: 1rem;
+    margin-left: 20px;
+
+    &:hover{
+        color: #000000;
+        border: 2px solid #000000;
+    }
+
+    &:focus{
+        outline: none;
+    }
 `
 
 export default Product;

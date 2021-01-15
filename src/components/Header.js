@@ -21,8 +21,9 @@ const Wrapper = styled.header`
 const Title = styled.h1`
     color: rgb(59, 72, 169);
     margin: 0%;
-    font-size: 4rem;
-    font-family: 'Work Sans', sans-serif
+    font-size: 8rem;
+    font-family: 'Bebas Neue', cursive;
+
 `
 
 export default Header;

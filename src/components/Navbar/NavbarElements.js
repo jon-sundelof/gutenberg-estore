@@ -35,12 +35,15 @@ export const NavLogo = styled(LinkR)`
     color: #fff;
     justify-self: flex-start;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
     display: flex;
     align-items: center;
     margin-left: 24px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-decoration: none;
+    font-family: 'Bebas Neue', cursive;
+
 
     &:hover {
         color: #DE8066;
