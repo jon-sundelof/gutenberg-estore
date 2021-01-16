@@ -43,7 +43,7 @@ const Navbar = ({ toggle, currentUser }) => {
                             <NavLinks to="contact">Contact Us</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="checkout"><i class="fas fa-shopping-basket"><span > {size}</span></i></NavLinks>
+                            <NavLinks to="checkout"><i className="fas fa-shopping-basket"><span > {size}</span></i></NavLinks>
                         </NavItem>
 
                         {renderLogin(currentUser) && (
