@@ -34,7 +34,16 @@ const CheckoutCartList = ({ currentUser, img, alt }) => {
     })}
         <PaymentContainer>
             <PaymentBox>
-
+                <PriceDataContainer>
+                    <PriceContainer>
+                        <CostOfItems>Cost of Items</CostOfItems>
+                        <CostOfItems>1246,00</CostOfItems>
+                    </PriceContainer>
+                    <PriceContainer>
+                        <TotalSum>Total Sum</TotalSum>
+                        <TotalSum>1246,00</TotalSum>
+                    </PriceContainer>
+                </PriceDataContainer>
                 <PlaceOrderBtn>
                     Place Order
                 </PlaceOrderBtn>
@@ -55,21 +64,20 @@ const CartContainer = styled.div`
 const PaymentContainer = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 35px;
+    margin-top: 15px;
     margin-bottom: 150px;
    /*  width: 100vw; */
 `
 const PaymentBox = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 200px;
     width: 700px;
     background: #fff;
 `
-const Text = styled.p`
-    font-size: 1.2rem;
-    
-`
+
 
 const PlaceOrderBtn = styled.button`
     width: 500px;
@@ -82,4 +90,22 @@ const PlaceOrderBtn = styled.button`
     &:focus{
         outline: none;
     }
+`
+const PriceDataContainer = styled.div`
+    width: 500px;
+`
+
+const PriceContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+`
+
+const CostOfItems = styled.p`
+    font-size: 1rem;
+`
+const TotalSum = styled.p`
+    font-size: 1.2rem;
+    font-style: bold;
+
 `

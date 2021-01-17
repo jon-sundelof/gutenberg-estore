@@ -28,39 +28,24 @@ const Dashboard = () => {
                     <DashHeader>Personal Infromation</DashHeader>
                     <InfromationContainer>
                         <LabelNdataCon><DashLabel>E-mail </DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>First Name </DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Last Name </DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Phone Number </DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Phone Number </DashLabel><DashDataCon></DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>First Name </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Last Name </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
                     </InfromationContainer>
                     <DashHeaderSmall>Physical Address</DashHeaderSmall>
                     <InfromationContainer>
-                        <LabelNdataCon><DashLabel>Country </DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>City </DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Address</DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Postal Code</DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        {/*   <LabelNdataCon><DashLabel>c/o</DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon> */}
+                        <LabelNdataCon><DashLabel>Country </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>City </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Address</DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Postal Code</DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
                     </InfromationContainer>
 
                     <ButtonsContainer>
-                        <UpdateProfileBtn to="/update-profile">Update Profile</UpdateProfileBtn>
+                        <UpdateProfileBtn to="/update-profile">Edit Profile<i class="fas fa-user-cog" style={{ marginLeft: '15px' }}></i></UpdateProfileBtn>
                         <LogoutBtn onClick={handleLogout}>Log Out</LogoutBtn>
                     </ButtonsContainer>
-
-
                 </DashboardInnerContaier>
             </DashboardContainer>
-            {/*      <div>Personal Infromation</div>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <strong>Email: </strong>{currentUser.email}
-            <br />
-            <div>:)</div>
-            <br />
-            <div>:)</div>
-            <br />
-            <div>:)</div>
-            <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
-            <br></br>
-            <Button variant="link" onClick={handleLogout}>Log Out</Button> */}
         </>
     )
 }
@@ -110,6 +95,7 @@ const DashboardInnerContaier = styled.div`
 `
 
 const DashHeader = styled.h1`
+    justify-self: center;
     color: #292929;
     text-align: center;
     margin-bottom: 35px;
@@ -130,6 +116,7 @@ const DashDataCon = styled.div`
     border: 1px solid rgba(210, 210, 210, 0.7);
     background: #fff;
     width: 200px;
+    height: 26px;
     padding-left: 4px;
     @media screen and (max-width: 350px) {
         width: 150px;
@@ -170,6 +157,7 @@ const LogoutBtn = styled.button`
     background: none;
     border: none;
 `
+
 
 
 

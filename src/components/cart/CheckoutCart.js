@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { FaTimes } from 'react-icons/fa';
+import Cancel from '../../img/cancel.png'
 
 
 const CheckoutCart = ({ item, img, alt }) => {
@@ -20,9 +21,9 @@ const CheckoutCart = ({ item, img, alt }) => {
                                     {item.alt}
                                 </Description>
                             </TextContainer>
-                            <Icon>
-                                <CloseIcon />
-                            </Icon>
+                            {/*  <Icon> */}
+                            <CloseIcon src={Cancel} />
+                            {/* </Icon> */}
                         </UpperRow>
 
                         <PriceAndRemoveCon>
@@ -46,7 +47,7 @@ const CheckoutCart = ({ item, img, alt }) => {
 const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+   /*  height: 350px; */
 `
 
 const UpperRow = styled.div`
@@ -54,7 +55,7 @@ const UpperRow = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 500px;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
 `
 
 const CartContainer = styled.div`
@@ -70,9 +71,10 @@ const ItemContainer = styled.div`
  /*    flex-direction: column; */
     align-items: center;
     background: #fff;
-    border-bottom: solid 1px grey;
+ /*    border-bottom: solid 1px grey;
+    border-width: 50%; */
     width: 700px;
-    height: 210px;
+    height: 250px;
 `;
 
 const TextContainer = styled.div`
@@ -89,22 +91,33 @@ const PriceAndRemoveCon = styled.div`
     justify-content: space-between;
 `;
 
-const Icon = styled.div`
+/* const Icon = styled.div`
     background: transparent;
     font-size: 2rem;
     padding-right: 20px;    
     cursor: pointer;
     outline: none;
-`;
+`; */
 
-const CloseIcon = styled(FaTimes)`
-  /*   justify-self: flex-end; */
+const CloseIcon = styled.img`
+    width: 5%;
+    height: 5%;
     color: #0f0f0f;
+    margin-right: 15px;
+
+    :hover {
+        cursor: pointer;
+    }
+
 `;
+/* const CloseIcon = styled(FaTimes)`
+    color: #0f0f0f;
+`; */
 
 const Price = styled.p`
     font-size: 1.2rem;
-    padding: 0 30px 0 30px;
+    margin-right: 30px;
+    margin-bottom: 0px;
 `;
 const Description = styled.p`
     font-size: 1rem;
@@ -120,7 +133,7 @@ const Title = styled.h1`
 const Img = styled.img`
     height: 15vh;
     margin: 8px;
-  /*   border-radius: 15px; */
+    border-radius: 15px;
     border: solid 1px grey;
 `;
 
@@ -128,7 +141,7 @@ const Selector = styled.select`
     align-self: flex-start;
     width: 60px;
     height: 35px;
-    border: 0.5px solid grey;
+    border: 1px solid grey;
     border-radius: 5px;
     outline: none;
 `;
