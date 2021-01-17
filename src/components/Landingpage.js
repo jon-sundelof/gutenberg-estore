@@ -3,6 +3,7 @@ import Header from "./Header";
 import gutenbergTshirt from "../img/gutenbergTshirt.jpg";
 import tinymceTshirt from "../img/tinymceTshirt.jpg";
 import quireTshirt from "../img/quireTshirt.jpg";
+import tinymcetwo from "../img/tinymcethree.png";
 import Product from "./Product"
 import styled from "styled-components"
 import firebase from "firebase"
@@ -46,6 +47,15 @@ const Landingpage = ({ currentUser }) => {
                         currentUserId={currentUser.uid}
 
                     />
+                    {/*   <Product
+                        name="Tiny <3 MCE"
+                        img={tinymcetwo}
+                        alt="The best note app on a t-shirt"
+                        infoText="The best note app"
+                        price="1000 Sek"
+                        currentUserId={currentUser.uid}
+
+                    /> */}
                 </Wrapper>
             </main>
             <Footer />

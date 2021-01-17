@@ -66,6 +66,11 @@ const PaymentBox = styled.div`
     width: 700px;
     background: #fff;
 `
+const Text = styled.p`
+    font-size: 1.2rem;
+    
+`
+
 const PlaceOrderBtn = styled.button`
     width: 500px;
     height: 80px;

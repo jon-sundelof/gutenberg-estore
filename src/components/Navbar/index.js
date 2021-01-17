@@ -47,9 +47,15 @@ const Navbar = ({ toggle, currentUser }) => {
                         </NavItem>
 
                         {renderLogin(currentUser) && (
-                            <NavBtn onClick={() => auth.signOut()}>
-                                <NavBtnLink>Logout</NavBtnLink>
-                            </NavBtn>
+                            <>
+                                <NavItem>
+                                    <NavLinks to="/dashboard">Profile</NavLinks>
+                                </NavItem>
+
+                                <NavBtn onClick={() => auth.signOut()}>
+                                    <NavBtnLink>Logout</NavBtnLink>
+                                </NavBtn>
+                            </>
                         )}
                         {!renderLogin(currentUser) && (
                             <>
