@@ -19,6 +19,7 @@ import CheckoutCartList from './components/cart/CheckoutCartList';
 import { handleUserProfile } from './firebase/utils';
 import { createGlobalStyle } from "styled-components";
 import Discover from './components/Discover';
+import Contact from "./components/contact/Contact"
 
 const products = []
 
@@ -89,6 +90,10 @@ const App = () => {
 
                         <Route exact path="/checkout">
                             <CheckoutCartList currentUser={currentUser} />
+                        </Route>
+
+                        <Route exact path="/contact">
+                            <Contact />
                         </Route>
 
                         <PrivateRouteNav path="/signup" component={SignupPage} />
