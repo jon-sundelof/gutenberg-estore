@@ -25,7 +25,7 @@ const Landingpage = ({ currentUser }) => {
                         img={gutenbergTshirt}
                         alt="Gutenberg t-shirt for gutenberg lovers"
                         infoText="For gutenberg lovers"
-                        price="249 Sek"
+                        price={249}
                         currentUserId={currentUser.uid}
 
                     />
@@ -34,7 +34,7 @@ const Landingpage = ({ currentUser }) => {
                         img={tinymceTshirt}
                         alt={"Tinymce tshirt"}
                         infoText="We will never forget you"
-                        price="419 Sek"
+                        price={419}
                         currentUserId={currentUser.uid}
 
                     />
@@ -43,7 +43,7 @@ const Landingpage = ({ currentUser }) => {
                         img={quireTshirt}
                         alt="The best note app on a t-shirt"
                         infoText="The best note app"
-                        price="1000 Sek"
+                        price={898}
                         currentUserId={currentUser.uid}
 
                     />

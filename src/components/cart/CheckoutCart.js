@@ -56,6 +56,14 @@ const UpperRow = styled.div`
     justify-content: space-between;
     width: 500px;
     margin-bottom: 45px;
+    @media screen and (max-width: 700px){
+        max-width: 250px;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 400px){
+        max-width: 300px;
+        margin-left: 8px;
+    }
 `
 
 const CartContainer = styled.div`
@@ -68,13 +76,19 @@ const CartContainer = styled.div`
 const ItemContainer = styled.div`
     display: flex;
     justify-content: space-between;
- /*    flex-direction: column; */
     align-items: center;
+
     background: #fff;
- /*    border-bottom: solid 1px grey;
-    border-width: 50%; */
+
     width: 700px;
     height: 250px;
+
+    @media screen and (max-width: 700px){
+        max-width: 400px;
+    }
+    @media screen and (max-width: 400px){
+        width: 100vw;
+    }
 `;
 
 const TextContainer = styled.div`
@@ -89,6 +103,9 @@ const PriceAndRemoveCon = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: 400px){
+        margin-left: 8px;
+    }
 `;
 
 /* const Icon = styled.div`
@@ -107,6 +124,10 @@ const CloseIcon = styled.img`
 
     :hover {
         cursor: pointer;
+    }
+    @media screen and (max-width: 700px){
+        width: 8%;
+        height: 8%;
     }
 
 `;
@@ -135,6 +156,12 @@ const Img = styled.img`
     margin: 8px;
     border-radius: 15px;
     border: solid 1px grey;
+    @media screen and (max-width: 700px){
+        height: 12vh;
+    }
+    @media screen and (max-width: 400px){
+        display: none;
+    }
 `;
 
 const Selector = styled.select`

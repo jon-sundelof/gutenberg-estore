@@ -25,6 +25,9 @@ const products = []
 const App = () => {
 
     const [currentUser, setCurrentUser] = useState("No current user")
+    const [userdata, setUserdata] = useState({})
+
+    console.log(userdata)
 
     let authListener = null;
 
@@ -94,8 +97,8 @@ const App = () => {
                         <Route exact path="/forgot-password" component={ForgotPassword} />
 
 
-                        <PrivateRoute path="/update-profile" component={UpdateProfile} />
-                        <PrivateRoute path="/dashboard" component={Dashboard} />
+                        <PrivateRoute path="/update-profile"><UpdateProfile setUserdata={setUserdata} userdata={userdata} /></PrivateRoute>
+                        <PrivateRoute path="/dashboard"><Dashboard userdata={userdata} /></PrivateRoute>
 
                     </Switch>
                 </AuthProvider>

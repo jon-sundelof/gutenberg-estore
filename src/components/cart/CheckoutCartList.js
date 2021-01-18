@@ -10,10 +10,13 @@ const db = firebase.firestore()
 
 
 
-const CheckoutCartList = ({ currentUser, img, alt }) => {
+const CheckoutCartList = ({ currentUser, img, alt, price }) => {
 
     const [products, setProducts] = useState([])
     let currentUserUid = currentUser.uid;
+
+
+
 
     useEffect(() => {
         let array = []
@@ -29,36 +32,65 @@ const CheckoutCartList = ({ currentUser, img, alt }) => {
 
     }, [currentUserUid])
 
-    return (<><CartContainer>{products.map(function (item, i) {
-        return (<CheckoutCart alt={alt} img={img} key={i} item={item} />);
-    })}
-        <PaymentContainer>
-            <PaymentBox>
-                <PriceDataContainer>
-                    <PriceContainer>
-                        <CostOfItems>Cost of Items</CostOfItems>
-                        <CostOfItems>1246,00</CostOfItems>
-                    </PriceContainer>
-                    <PriceContainer>
-                        <TotalSum>Total Sum</TotalSum>
-                        <TotalSum>1246,00</TotalSum>
-                    </PriceContainer>
-                </PriceDataContainer>
-                <PlaceOrderBtn>
-                    Place Order
+    return (
+        <>
+            <CartHeader>
+                <Header>Checkout Cart</Header>
+            </CartHeader>
+
+            <CartContainer>{products.map(function (item, i) {
+                return (<CheckoutCart price={price} alt={alt} img={img} key={i} item={item} />);
+            })}
+
+                <PaymentContainer>
+                    <PaymentBox>
+                        <PriceDataContainer>
+                            <PriceContainer>
+                                <CostOfItems>Cost of Items</CostOfItems>
+                                <CostOfItems>{products ? products.reduce((a, b) => + a + b.Price, 0) : 'Loading'}</CostOfItems>
+                            </PriceContainer>
+                            <PriceContainer>
+                                <TotalSum>Total Sum</TotalSum>
+                                <TotalSum>{products ? products.reduce((a, b) => + a + b.Price, 0) : 'Loading'}</TotalSum>
+                            </PriceContainer>
+                        </PriceDataContainer>
+                        <PlaceOrderBtn>
+                            Place Order
                 </PlaceOrderBtn>
-            </PaymentBox>
-        </PaymentContainer>
-    </CartContainer>
-    </>
+                    </PaymentBox>
+                </PaymentContainer>
+            </CartContainer>
+        </>
     );
 }
 
 
 export default CheckoutCartList
 
+
+const CartHeader = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 35px auto;
+    margin-bottom: 0;
+    height: 100px;
+    width: 700px;
+    background: #fff;
+
+    @media screen and (max-width: 700px){
+        max-width: 400px;
+    }
+    @media screen and (max-width: 400px){
+        width: 100vw;
+    }
+
+`
+const Header = styled.h1`
+
+`
+
 const CartContainer = styled.div`
-    margin-top: 35px;
 `
 
 const PaymentContainer = styled.div`
@@ -76,6 +108,9 @@ const PaymentBox = styled.div`
     height: 200px;
     width: 700px;
     background: #fff;
+    @media screen and (max-width: 700px){
+        max-width: 400px;
+    }
 `
 
 
@@ -90,9 +125,17 @@ const PlaceOrderBtn = styled.button`
     &:focus{
         outline: none;
     }
+
+    @media screen and (max-width: 700px){
+        max-width: 250px;
+        height: 50px
+    }
 `
 const PriceDataContainer = styled.div`
     width: 500px;
+    @media screen and (max-width: 700px){
+        max-width: 300px;
+    }
 `
 
 const PriceContainer = styled.div`

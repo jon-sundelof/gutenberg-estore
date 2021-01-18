@@ -11,11 +11,6 @@ const NavbarShow = ({ currentUser }) => {
         console.log('hola')
     }
 
-    function hej() {
-        console.log('Hola')
-    }
-
-
 
     return (
         <>

@@ -53,7 +53,7 @@ const Navbar = ({ toggle, currentUser }) => {
                                 </NavItem>
 
                                 <NavBtn onClick={() => auth.signOut()}>
-                                    <NavBtnLink>Logout</NavBtnLink>
+                                    <NavBtnLink to="/" >Logout</NavBtnLink>
                                 </NavBtn>
                             </>
                         )}

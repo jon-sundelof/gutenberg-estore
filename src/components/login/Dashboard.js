@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components'
 
-const Dashboard = () => {
+const Dashboard = ({ userdata }) => {
 
     const [error, setError] = useState('')
     const { currentUser, logout } = useAuth()
@@ -28,21 +28,21 @@ const Dashboard = () => {
                     <DashHeader>Personal Infromation</DashHeader>
                     <InfromationContainer>
                         <LabelNdataCon><DashLabel>E-mail </DashLabel><DashDataCon>{currentUser.email}</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Phone Number </DashLabel><DashDataCon></DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>First Name </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Last Name </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Phone Number </DashLabel><DashDataCon>{userdata.phonenumber}</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>First Name </DashLabel><DashDataCon>{userdata.firstname}</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Last Name </DashLabel><DashDataCon>{userdata.lastname}</DashDataCon></LabelNdataCon>
                     </InfromationContainer>
                     <DashHeaderSmall>Physical Address</DashHeaderSmall>
                     <InfromationContainer>
-                        <LabelNdataCon><DashLabel>Country </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>City </DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Address</DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
-                        <LabelNdataCon><DashLabel>Postal Code</DashLabel><DashDataCon>{ }</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Country </DashLabel><DashDataCon>{userdata.country}</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>City </DashLabel><DashDataCon>{userdata.city}</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Address</DashLabel><DashDataCon>{userdata.address}</DashDataCon></LabelNdataCon>
+                        <LabelNdataCon><DashLabel>Postal Code</DashLabel><DashDataCon>{userdata.postcode}</DashDataCon></LabelNdataCon>
                     </InfromationContainer>
 
                     <ButtonsContainer>
                         <UpdateProfileBtn to="/update-profile">Edit Profile<i class="fas fa-user-cog" style={{ marginLeft: '15px' }}></i></UpdateProfileBtn>
-                        <LogoutBtn onClick={handleLogout}>Log Out</LogoutBtn>
+                        <LogoutBtn to="/" onClick={handleLogout}>Log Out</LogoutBtn>
                     </ButtonsContainer>
                 </DashboardInnerContaier>
             </DashboardContainer>
@@ -118,6 +118,7 @@ const DashDataCon = styled.div`
     width: 200px;
     height: 26px;
     padding-left: 4px;
+    overflow:hidden;
     @media screen and (max-width: 350px) {
         width: 150px;
     }
