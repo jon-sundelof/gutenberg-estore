@@ -27,7 +27,7 @@ const Landingpage = ({ currentUser }) => {
                         infoText="For gutenberg lovers"
                         price={249}
                         currentUserId={currentUser.uid}
-
+                        currentUser={currentUser}
                     />
                     <Product
                         name="tinymceTshirt"
@@ -36,7 +36,7 @@ const Landingpage = ({ currentUser }) => {
                         infoText="We will never forget you"
                         price={419}
                         currentUserId={currentUser.uid}
-
+                        currentUser={currentUser}
                     />
                     <Product
                         name="quireTshirt"
@@ -45,9 +45,9 @@ const Landingpage = ({ currentUser }) => {
                         infoText="The best note app"
                         price={898}
                         currentUserId={currentUser.uid}
-
+                        currentUser={currentUser}
                     />
-                    {/*   <Product
+                    {/* <Product
                         name="Tiny <3 MCE"
                         img={tinymcetwo}
                         alt="The best note app on a t-shirt"

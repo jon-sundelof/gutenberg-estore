@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CheckoutCart from "./CheckoutCart"
 import firebase from "firebase"
 import styled from 'styled-components'
+import _ from "lodash"
 
 const db = firebase.firestore()
 
@@ -15,9 +16,6 @@ const CheckoutCartList = ({ currentUser, img, alt, price }) => {
     const [products, setProducts] = useState([])
     let currentUserUid = currentUser.uid;
 
-
-
-
     useEffect(() => {
         let array = []
         const getProducts = async () => {
@@ -27,6 +25,16 @@ const CheckoutCartList = ({ currentUser, img, alt, price }) => {
                 });
             });
             setProducts(array)
+            // const newProducts =
+            //     _(array)
+            //         .groupBy('Tshirt') // when names are the same => same group.  this gets us an array of groups (arrays)
+            //         .flatten() // flatten array of arrays down to just one array
+            //         .value();
+
+
+
+            // _.sortedUniq(products["quireTshirt", "tinymceTshirt"])
+            // console.log(newProducts)
         }
         getProducts()
 
