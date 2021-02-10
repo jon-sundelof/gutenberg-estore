@@ -4,7 +4,7 @@ import { FaTimes } from 'react-icons/fa';
 import Cancel from '../../img/cancel.png'
 
 
-const CheckoutCart = ({ item, img, alt }) => {
+const CheckoutCart = ({ item, img, alt, amount }) => {
 
     return (
         <>
@@ -27,13 +27,7 @@ const CheckoutCart = ({ item, img, alt }) => {
                         </UpperRow>
 
                         <PriceAndRemoveCon>
-                            <Selector>
-                                <Option value="1">1</Option>
-                                <Option value="2">2</Option>
-                                <Option value="3">3</Option>
-                                <Option value="4">4</Option>
-                                <Option value="5">5</Option>
-                            </Selector>
+                            <Price>{amount}</Price>
                             <Price>
                                 {item.Price}
                             </Price>

@@ -38,6 +38,8 @@ const CheckoutCartList = ({ currentUser, img, alt, price }) => {
         }
         getProducts()
 
+        console.log(products)
+
     }, [currentUserUid])
 
     return (
@@ -47,7 +49,7 @@ const CheckoutCartList = ({ currentUser, img, alt, price }) => {
             </CartHeader>
 
             <CartContainer>{products.map(function (item, i) {
-                return (<CheckoutCart price={price} alt={alt} img={img} key={i} item={item} />);
+                return (<CheckoutCart amount={item.amount} price={price} alt={alt} img={img} key={i} item={item} />);
             })}
 
                 <PaymentContainer>

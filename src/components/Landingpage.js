@@ -44,6 +44,7 @@ const Landingpage = ({ currentUser }) => {
                         alt="The best note app on a t-shirt"
                         infoText="The best note app"
                         price={898}
+                        amount={1}
                         currentUserId={currentUser.uid}
                         currentUser={currentUser}
                     />

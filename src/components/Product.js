@@ -10,8 +10,9 @@ const db = firebase.firestore();
 
 let array = [];
 
-const Product = ({ img, alt, infoText, price, name, currentUserId, currentUser }) => {
+const Product = ({ img, alt, infoText, price, name, amount, currentUserId, currentUser }) => {
 
+    const [amountProd, setAmountProd] = useState(0)
 
 
     let history = useHistory()
@@ -20,37 +21,6 @@ const Product = ({ img, alt, infoText, price, name, currentUserId, currentUser }
     const increment = firebase.firestore.FieldValue.increment(1);
     const storyRef = db.collection('users').doc(currentUserId).collection("cart").doc(name);
     const FieldValue = firebase.firestore.FieldValue;
-    /* 
-            useEffect(() => {
-        
-                usersRef.get()
-                    .then((docSnapshot) => {
-                        if (docSnapshot.exists) {
-                            console.log("exist")
-                        } else {
-                            usersRef.onSnapshot((doc) => {
-                                db.collection("users").doc(currentUserId).set({
-                                    Name: currentUser.email,
-                                    Role: "Peasant"
-                                })
-                            })
-                        }
-                    })
-        
-                userDoc.get()
-                    .then((docSnapshot) => {
-                        if (docSnapshot.exists) {
-                            console.log("exist")
-                        } else {
-                            usersRef.onSnapshot((doc) => {
-                                db.collection("users").doc(currentUserId).set({
-                                    Name: currentUser.email,
-                                    Role: "Peasant"
-                                })
-                            })
-                        }
-                    })
-            }, []) */
 
 
     const imageProps = {
@@ -67,27 +37,28 @@ const Product = ({ img, alt, infoText, price, name, currentUserId, currentUser }
         enlargedImageContainerStyle: { background: '#fffff', zIndex: 9 }
     }
 
-
     const onButtonClick = () => {
-        const storyRef = db.collection('users').doc(currentUserId).collection("cart").doc(name);
+        const date = Date.now()
 
+
+
+        const storyRef = db.collection('users').doc(currentUserId).collection("cart").doc(name);
+        console.log(storyRef)
         if (!currentUserId) {
             history.push("/login")
             return;
-        }
+        } else {
+            db.collection('users').doc(currentUserId).collection("cart").doc(name).get()
+                .then((docSnapshot) => {
 
-        const date = Date.now()
+                    if (docSnapshot.exists) {
+                        db.collection('users').doc(currentUserId).collection("cart").doc(name).update({
+                            amount: firebase.firestore.FieldValue.increment(1)
+                        })
 
-        storyRef.get()
-            .then((docSnapshot) => {
-                if (docSnapshot.exists) {
-                    console.log("Exist lol", storyRef.firestore._)
-                    /* storyRef.update({ amount: increment }) */
-                    storyRef.update({ amount: firebase.firestore.FieldValue.increment(1) })
-                } else {
 
-                    console.log("noob")
-                    storyRef.onSnapshot((doc) => {
+                    } else {
+
                         db.collection("users").doc(currentUserId).collection("cart").doc(name).set({
                             Img: img,
                             Tshirt: name,
@@ -96,12 +67,10 @@ const Product = ({ img, alt, infoText, price, name, currentUserId, currentUser }
                             alt: alt,
                             amount: 1
                         })
+                    }
+                })
 
-                    })
-
-                }
-            })
-
+        }
 
     }
 
@@ -110,7 +79,7 @@ const Product = ({ img, alt, infoText, price, name, currentUserId, currentUser }
             <ImageContainer>
                 <ReactImageMagnify {...imageProps} />
             </ImageContainer>
-            <Title>{infoText}</Title>
+            <Title> {infoText}</Title>
             <Price>{price}<Button onClick={onButtonClick}>BUY <i className="fas fa-shopping-cart" style={{ fontSize: "1rem" }}></i></Button></Price>
         </Wrapper>
     )

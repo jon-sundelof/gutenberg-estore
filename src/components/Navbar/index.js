@@ -12,11 +12,39 @@ const db = firebase.firestore();
 
 const Navbar = ({ toggle, currentUser }) => {
 
-    const [size, setSize] = useState(0)
+    const [list, setList] = useState([])
+    const [products, setProducts] = useState([])
 
-    db.collection("users").doc(currentUser.uid).collection("cart").get().then(snap => {
-        setSize(snap.size)
+    console.log(currentUser.uid)
+
+    useEffect(() => {
+        let array = []
+        const getProducts = async () => {
+            await db.collection("users").doc(currentUser.uid).collection("cart").get().then(function (item) {
+                item.forEach(function (doc) {
+                    array.push(doc.data())
+                });
+            });
+            setProducts(array)
+
+        }
+        getProducts()
+
+        console.log(products)
+
+    }, [])
+
+    let amountSuff = 0;
+
+    products.map(function (item) {
+
+        return amountSuff += item.amount;
+
+
     })
+
+
+    console.log(amountSuff)
 
     const renderLogin = currentUser => {
         if (currentUser == "No current user") return false
@@ -43,7 +71,7 @@ const Navbar = ({ toggle, currentUser }) => {
                             <NavLinks to="contact">Contact Us</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="checkout"><i className="fas fa-shopping-basket"><span > {size}</span></i></NavLinks>
+                            <NavLinks to="checkout"><i className="fas fa-shopping-basket"><span> {amountSuff}</span></i></NavLinks>
                         </NavItem>
 
                         {renderLogin(currentUser) && (
